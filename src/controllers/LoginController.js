@@ -6,8 +6,7 @@ const jwt = require('jsonwebtoken');
 
 async function Login(request, response) {
     const { email, senha } = request.body;
-    console.log(email, senha);
-
+    
     let erro = false;
     const admin = await knex("usuarios").where({email}).select("id", "email", "nome", "senha").catch(
         (err) => {
