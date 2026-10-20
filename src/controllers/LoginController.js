@@ -20,7 +20,6 @@ async function Login(request, response) {
     }
 
     if(admin.length > 0){
-        console.log(admin);
         if(await bcrypt.compare(senha, admin[0].senha)){
             const token_jwt = jwt.sign({ id: admin[0].id, email}, process.env.JWT_PASSWORD, { expiresIn: "24h"});
             return response.status(200).json({sucess: true, token_jwt, nome: admin[0].nome, id: admin[0].id});
